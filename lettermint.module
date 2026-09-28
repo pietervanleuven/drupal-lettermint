@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Sends email using the Lettermint API.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_cron().
+ */
+function lettermint_cron(): void {
+  $time_limit = (int) \Drupal::config('lettermint.settings')->get('cron_time_limit');
+  \Drupal::service('lettermint.queue_processor')->process(max(1, $time_limit));
+}

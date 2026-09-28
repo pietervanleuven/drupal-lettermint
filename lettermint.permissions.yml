@@ -1,0 +1,4 @@
+administer lettermint:
+  title: 'Administer Lettermint settings'
+  description: 'Configure the Lettermint API token, sender, delivery and webhook settings.'
+  restrict access: true

@@ -1,0 +1,24 @@
+services:
+  logger.channel.lettermint:
+    parent: logger.channel_base
+    arguments: ['lettermint']
+
+  lettermint.client:
+    class: Drupal\lettermint\LettermintClient
+    arguments: ['@http_client', '@config.factory']
+  Drupal\lettermint\LettermintClient: '@lettermint.client'
+
+  lettermint.message_builder:
+    class: Drupal\lettermint\MessageBuilder
+    arguments: ['@config.factory']
+  Drupal\lettermint\MessageBuilder: '@lettermint.message_builder'
+
+  lettermint.queue_processor:
+    class: Drupal\lettermint\QueueProcessor
+    arguments: ['@lettermint.client', '@queue', '@config.factory', '@logger.channel.lettermint', '@datetime.time', '@uuid']
+  Drupal\lettermint\QueueProcessor: '@lettermint.queue_processor'
+
+  lettermint.webhook_verifier:
+    class: Drupal\lettermint\WebhookVerifier
+    arguments: ['@datetime.time']
+  Drupal\lettermint\WebhookVerifier: '@lettermint.webhook_verifier'

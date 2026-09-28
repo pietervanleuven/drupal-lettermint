@@ -1,0 +1,45 @@
+lettermint.settings:
+  type: config_object
+  label: 'Lettermint settings'
+  mapping:
+    api_token:
+      type: string
+      label: 'Project API token'
+    sender_name:
+      type: string
+      label: 'Sender name'
+    sender_email:
+      type: string
+      label: 'Sender email'
+    route:
+      type: string
+      label: 'Route'
+    tag_with_mail_id:
+      type: boolean
+      label: 'Tag messages with the Drupal mail ID'
+    delivery_mode:
+      type: string
+      label: 'Delivery mode'
+      constraints:
+        Choice:
+          - direct
+          - queue
+    queue_on_failure:
+      type: boolean
+      label: 'Queue messages for retry when direct sending fails'
+    batch_size:
+      type: integer
+      label: 'Messages per batch request'
+      constraints:
+        Range:
+          min: 1
+          max: 500
+    cron_time_limit:
+      type: integer
+      label: 'Seconds to spend sending queued mail per cron run'
+      constraints:
+        Range:
+          min: 1
+    webhook_secret:
+      type: string
+      label: 'Webhook signing secret'

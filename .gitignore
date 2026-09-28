@@ -1,0 +1,15 @@
+# Environment specific files and folders.
+.idea/
+.vscode/
+.fleet/
+nbproject/
+*.sublime-project
+*.sublime-workspace
+
+# OS specific files.
+.DS_Store
+Thumbs.db
+
+# Dependencies and build artifacts.
+/vendor/
+composer.lock

@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Lettermint module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Hook\Attribute\LegacyRequirementsHook;
+use Drupal\lettermint\Hook\LettermintRequirements;
+use Drupal\lettermint\QueueProcessor;
+
+/**
+ * Implements hook_requirements().
+ *
+ * Only used on Drupal < 11.3, later versions call
+ * LettermintRequirements::runtime() directly.
+ */
+#[LegacyRequirementsHook]
+function lettermint_requirements(string $phase): array {
+  if ($phase !== 'runtime') {
+    return [];
+  }
+  return \Drupal::classResolver(LettermintRequirements::class)->runtime();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function lettermint_uninstall(): void {
+  \Drupal::queue(QueueProcessor::QUEUE_NAME)->deleteQueue();
+}

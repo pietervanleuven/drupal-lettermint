@@ -1,0 +1,18 @@
+lettermint.settings:
+  path: '/admin/config/system/lettermint'
+  defaults:
+    _form: '\Drupal\lettermint\Form\LettermintSettingsForm'
+    _title: 'Lettermint Settings'
+  requirements:
+    _permission: 'administer lettermint'
+
+lettermint.webhook:
+  path: '/lettermint/webhook'
+  defaults:
+    _controller: '\Drupal\lettermint\Controller\WebhookController::handle'
+  methods: [POST]
+  requirements:
+    # Requests are authenticated by their HMAC signature in the controller.
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE

@@ -1,0 +1,6 @@
+name: Lettermint
+type: module
+description: 'Send emails using the Lettermint API, with optional queued batch sending.'
+package: Mail
+core_version_requirement: ^10.3 || ^11
+configure: lettermint.settings

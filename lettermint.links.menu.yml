@@ -1,0 +1,5 @@
+lettermint.settings:
+  title: 'Lettermint Settings'
+  description: 'Configure the Lettermint API for sending emails.'
+  route_name: lettermint.settings
+  parent: system.admin_config_system

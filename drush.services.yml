@@ -1,0 +1,5 @@
+services:
+  lettermint.commands:
+    class: Drupal\lettermint\Drush\Commands\LettermintCommands
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,10 @@
+api_token: ''
+sender_name: ''
+sender_email: ''
+route: ''
+tag_with_mail_id: true
+delivery_mode: direct
+queue_on_failure: true
+batch_size: 100
+cron_time_limit: 30
+webhook_secret: ''
